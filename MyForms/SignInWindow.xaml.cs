@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -76,6 +77,11 @@ namespace AutoWPF.MyForms
             else
             {
                 MessageBox.Show("Капча не верна");
+                for (int i = 10; i > 0; i--)
+                {
+                    this.Title = $"блокировка {i} cек";
+                    Thread.Sleep(1000);                    
+                }                              
             }
 
         }
@@ -89,7 +95,7 @@ namespace AutoWPF.MyForms
 
         private void btReflesh_Click(object sender, RoutedEventArgs e)
         {
-
+            SignInWindow_Loaded(sender, e);
         }
     }
 }
